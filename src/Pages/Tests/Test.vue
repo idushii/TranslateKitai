@@ -16,7 +16,7 @@
             <li v-for="(Item, key) in Test.Items[indexItem].Variants" :key="`item-${key}`" class="list-group-item" :class="{active: indexVariant == key}" @click="selectVariant(key)">{{Item}}</li>
           </ul>
           <router-link :to="{name: 'Test', params: {index, indexItem: nextIndex} }" class="float-right btn btn-light" :class="{disabled: indexVariant == null}" v-if="nextIndex < Test.Items.length">Дальше</router-link>
-          <router-link :to="{name: 'Tests', params: {index, indexItem: nextIndex} }" class="float-right btn btn-light" v-else>Посмотреть результаты</router-link>
+          <router-link :to="{name: 'Tests', params: {index, indexItem: nextIndex} }" class="float-right btn btn-light" :class="{disabled: indexVariant == null}" v-else>Посмотреть результаты</router-link>
         </div>
       </div>
     </div>
