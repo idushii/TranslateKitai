@@ -5,10 +5,10 @@
         <div class="card">
           <div class="card-header">Уровень</div>
           <ul class="list-group mt-2">
-            <li class="list-group-item" v-for="(item, key) in Levels" :key="`cat-${key}`">
+            <li class="list-group-item" v-for="(item, key) in Levels" :key="`level-${key}`">
               <div class="form-check">
-                <input type="radio" class="form-check-input" @change="setSearchHSK" :id="`cat-${key}`" :value="key" v-model="SearchHSK.Level">
-                <label class="form-check-label" :for="`cat-${key}`">{{item.Title}}</label>
+                <input type="radio" class="form-check-input" @change="setSearchHSK" :id="`level-${key}`" :value="key" v-model="SearchHSK.Level">
+                <label class="form-check-label" :for="`level-${key}`">{{item.Title}}</label>
               </div>
             </li>
           </ul>
