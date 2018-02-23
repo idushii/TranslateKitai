@@ -3,11 +3,16 @@
     <div class="row">
       <div class="col-sm-4 col-lg-3">
         <div class="card">
-          <div class="card-header">Отбор</div>
-            <select class="form-control" v-model="SearchHSK.Level">
-              <option v-for="(item, key) in Levels" :key="`Level1-${key}`" :value="key">{{item.Title}}</option>
-            </select>
-          <div class="card-header border-top">Категории</div>
+          <div class="card-header">Уровень</div>
+          <ul class="list-group mt-2">
+            <li class="list-group-item" v-for="(item, key) in Levels" :key="`cat-${key}`">
+              <div class="form-check">
+                <input type="radio" class="form-check-input" @change="setSearchHSK" :id="`cat-${key}`" :value="key" v-model="SearchHSK.Level">
+                <label class="form-check-label" :for="`cat-${key}`">{{item.Title}}</label>
+              </div>
+            </li>
+          </ul>
+          <div class="card-header">Категории</div>
           <ul class="list-group mt-2">
             <li class="list-group-item" v-for="(item, key) in Cat" :key="`cat-${key}`">
               <div class="form-check">
