@@ -34,7 +34,8 @@
       </div>
       <div class="col">
         <div class="card">
-          <h5 class="card-header text-center">Результаты</h5>
+          <div class="card-header">Результаты</div>
+          <div class="card-body p-1"><input type="text" class="form-control" placeholder=" Поиск"></div>
           <ul class="list-group">
             <li class="list-group-item">Строка #1</li>
             <li class="list-group-item">Строка #2</li>
