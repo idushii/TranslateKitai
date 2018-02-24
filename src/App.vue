@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     toggleEdit() {
-      this.$store.commit("setModeEdit", ! this.isModeEdit);
+      this.$store.dispatch("setModeEdit", !this.isModeEdit);
     }
   }
 };

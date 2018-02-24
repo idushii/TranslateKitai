@@ -51,6 +51,10 @@ export default new Vuex.Store({
       context.commit('setSearchHSK', Search)
       this.dispatch('saveLocal')
     },
+    setModeEdit(context, Type) {
+      this.commit('setModeEdit', Type)
+      this.dispatch('saveLocal')
+    }
   },
   getters: {
     progressTest: (state) => state.User.Test,
