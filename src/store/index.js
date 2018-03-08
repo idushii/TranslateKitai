@@ -6,7 +6,9 @@ import TextPages from './TextPages'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+
+
+let data = new Vuex.Store({
   state: {
     User: {
       isModeEdit: false,
@@ -38,6 +40,8 @@ export default new Vuex.Store({
   actions: {
     saveLocal(context) {
       localStorage['Data'] = JSON.stringify(context.state.User)
+      firebase.database().ref('TranslateKitai').set(context.state.TextPages.Pages);
+      console.log('saveLocal')
     },
     loadLocal(context) {
       if (localStorage['Data']) {
@@ -45,7 +49,18 @@ export default new Vuex.Store({
         console.log("Локальные данные загружены")
       } else {
         console.log("Нет сохраненных данных")
-      }
+      }//*/
+      let link = context.state.TextPages;
+      firebase
+        .database()
+        .ref(`TranslateKitai`)
+        .once("value")
+        .then(function(snapshot) {
+          context.state.TextPages.Pages = snapshot.val();
+          console.log('Данные получены')
+        })
+        .catch(e => alert("Ошибка загрузки данных"));//*/
+
     },
     setSearchHSK(context, Search) {
       context.commit('setSearchHSK', Search)
@@ -67,3 +82,5 @@ export default new Vuex.Store({
     TextPages
   }
 })
+
+export default data

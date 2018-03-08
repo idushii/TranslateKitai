@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container mt-3" :class="{'d-none': isModeEdit}" v-html="HTML"></div>
-    <vue-editor id="VueEditor" :editorToolbar="customToolbar" v-model="HTML" v-if="isModeEdit" />
+    <vue-editor id="VueEditor" :editorToolbar="customToolbar" :value="HTML" @input="updateText" v-if="isModeEdit" />
   </div>
 </template>
 
@@ -10,7 +10,6 @@ export default {
   name: "StartPage",
   data() {
     return {
-      HTML: this.$store.getters.TextPage(this.$route.name),
       customToolbar: [
         [{ font: [] }],
         [{ header: [false, 1, 2, 3, 4, 5, 6] }],
@@ -37,10 +36,17 @@ export default {
   computed: {
     isModeEdit() {
       return this.$store.getters.isModeEdit;
+    },
+    HTML() {
+      return this.$store.getters.TextPage(this.$route.name)
     }
   },
   mounted() {},
-  methods: {},
+  methods: {
+    updateText(HTML) {
+      this.$store.commit('setTextPage', {Page: "StartPage", HTML})
+    }
+  },
   components: {}
 };
 </script>

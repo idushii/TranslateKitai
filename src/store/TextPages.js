@@ -6,6 +6,11 @@ export default {
       About: 'История китайского языка',
     }
   },
+  mutations: {
+    setTextPage(state, {Page, HTML}) {
+      state.Pages[Page] = HTML
+    }
+  },
   getters: {
     TextPage: (state) => (index) => state.Pages[index],
   }
